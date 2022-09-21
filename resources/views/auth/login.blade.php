@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="container">
-    <div class="card col-6 m-auto border-0">
+    <div class="card col-6 m-auto border-0 shadow-lg">
       <div class="card-header bg-dark-blue text-light">
         {{ __('Login') }}
       </div>

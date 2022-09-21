@@ -21273,12 +21273,6 @@ readers do not read off random characters that represent icons */
   content: "\f3f6";
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 body {
   font-family: "Roboto Condensed";
   background-color: #d1d1d1;
@@ -21287,10 +21281,10 @@ body {
 
 .bg-image {
   background-image: url(/images/background.webp?bd0c1cdbf1e6f7b6186d9ef589dfd209);
-  height: 100%;
-  background-position: center;
+  background-position: center, center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .table {
@@ -21306,7 +21300,7 @@ th {
 }
 
 .navbar {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .bg-dark-blue {
@@ -21326,17 +21320,17 @@ h1, .h1 {
 }
 
 .wrapper {
-  margin-top: 5rem;
+  margin-top: 3rem;
+  justify-content: center;
   display: grid;
-  grid-gap: 25px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 30px;
   width: 100%;
 }
 
 .help-button {
   font-size: 25px;
-  display: flex-column;
+  display: flex;
   padding: 3rem;
   color: rgba(0, 0, 0, 0.3137254902);
   width: 100%;
@@ -21350,13 +21344,10 @@ h1, .h1 {
 }
 
 .help-button:hover {
-  box-shadow: 3px;
   background-color: rgba(26, 69, 110, 0.8823529412);
   display: flex;
   padding: 2rem;
   color: rgba(255, 255, 255, 0.5019607843);
-  width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
 }

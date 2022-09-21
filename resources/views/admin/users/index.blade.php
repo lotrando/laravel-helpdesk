@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="container-fluid">
-    <div class="card col-6 m-auto border-0">
+    <div class="card col-12 m-auto mb-3 border-0 shadow-lg">
       <div class="card-header bg-dark-blue text-light">
         {{ __('Users') }}
       </div>
@@ -17,9 +17,8 @@
               <th scope="col">@sortablelink('updated_at', __('Updated At'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th scope="col">
                 <div class="d-grid">
-                  <button class="btn btn-sm btn-block btn-success"
-                          href="{{ route('admin.users.create') }}"
-                          role="button">{{ __('Create') }}</button>
+                  <a class="btn btn-sm btn-block btn-success" href="{{ route('admin.users.create') }}"
+                     role="button">{{ __('Create') }}</a>
                 </div>
               </th>
             </tr>
@@ -32,20 +31,23 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->created_at->format('d. m. Y') }}</td>
                 <td>{{ $user->updated_at->format('d. m. Y') }}</td>
-                <td width="225px">
+                <td width="110px">
                   <div class="w-100 d-flex gap-1">
                     <a class="btn btn-sm btn-secondary" type="button"
                        href="{{ route('admin.users.show', $user->id) }}"><i
                          class="fa-solid fa-eye"></i>
-                      {{ __('Show') }}</a>
+                      {{-- {{ __('Show') }} --}}
+                    </a>
                     <a class="btn btn-sm btn-primary" type="button"
                        href="{{ route('admin.users.edit', $user->id) }}"><i
                          class="fa-solid fa-pen"></i>
-                      {{ __('Edit') }}</a>
+                      {{-- {{ __('Edit') }} --}}
+                    </a>
                     <button class="btn btn-sm btn-danger" type="button"
                             onclick="event.preventDefault();
                   document.getElementById('delete-user-{{ $user->id }}').submit()"><i
-                         class="fa-solid fa-trash"></i> {{ __('Delete') }}
+                         class="fa-solid fa-trash"></i>
+                      {{-- {{ __('Delete') }} --}}
                     </button>
                     <form class="d-none" id="delete-user-{{ $user->id }}"
                           action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
