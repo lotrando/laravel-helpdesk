@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/printers', function () {
+    return view('printer')->name('printers');
+});
+
 // User routes
 Route::get('dashboard', function () {
     return view('dashboard');

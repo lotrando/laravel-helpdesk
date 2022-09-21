@@ -21273,10 +21273,24 @@ readers do not read off random characters that represent icons */
   content: "\f3f6";
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: "Roboto Condensed";
   background-color: #d1d1d1;
   color: #858585;
+}
+
+.bg-image {
+  background-image: url(/images/background.webp?bd0c1cdbf1e6f7b6186d9ef589dfd209);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .table {
@@ -21309,4 +21323,96 @@ th {
 
 h1, .h1 {
   margin-bottom: 0;
+}
+
+.wrapper {
+  margin-top: 5rem;
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+}
+
+.help-button {
+  font-size: 25px;
+  display: flex-column;
+  padding: 3rem;
+  color: rgba(0, 0, 0, 0.3137254902);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.help-button i {
+  font-size: 130px;
+}
+
+.help-button:hover {
+  box-shadow: 3px;
+  background-color: rgba(26, 69, 110, 0.8823529412);
+  display: flex;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.5019607843);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.one {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(201, 25, 25, 0.5843137255);
+  grid-column: 1/4;
+  grid-row: 1;
+}
+
+.two {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(223, 158, 17, 0.5843137255);
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.three {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(121, 139, 16, 0.631372549);
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.four {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(33, 187, 19, 0.5843137255);
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.five {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(18, 194, 207, 0.5843137255);
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.six {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(18, 94, 207, 0.5843137255);
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.seven {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(131, 18, 207, 0.5843137255);
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.eight {
+  color: rgba(255, 255, 255, 0.5647058824);
+  background-color: rgba(206, 22, 151, 0.5843137255);
+  grid-column: 4;
+  grid-row: 2;
 }
