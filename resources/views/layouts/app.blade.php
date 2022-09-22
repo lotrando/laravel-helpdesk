@@ -14,7 +14,7 @@
 <body class="bg-image vh-100">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark-blue shadow">
     <div class="container-fluid">
-      <a class="navbar-brand" href="@if (Auth::check()) dashboard @else/ @endif">
+      <a class="navbar-brand" href="/">
         {{ config('app.name', 'Laravel') }}
       </a>
       <button class="navbar-toggler" data-bs-toggle="collapse"
@@ -26,16 +26,24 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {{-- Left Side Of Navbar --}}
-        @auth
-          <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto">
+          @can('admin')
             <li class="nav-item">
               <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('Users') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('admin.roles.index') }}">{{ __('Roles') }}</a>
             </li>
-          </ul>
-        @endauth
+          @endcan
+          @auth
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ __('Profile') }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ __('Password') }}</a>
+            </li>
+          @endauth
+        </ul>
         {{-- Right Side Of Navbar --}}
         <ul class="navbar-nav ms-auto">
           {{-- Authentication Links --}}
@@ -100,6 +108,7 @@
       </div>
     </div>
   </div>
+  @include('sweetalert::alert')
 </body>
 
 </html>

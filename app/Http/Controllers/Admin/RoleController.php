@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleController extends Controller
 {
@@ -15,7 +17,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return Role::all();
+        if (Gate::allows('admin')) {
+            return Role::all();
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -25,7 +32,12 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::allows('admin')) {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        } else {
+            //
+        }
     }
 
     /**
@@ -47,7 +59,12 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Gate::allows('admin')) {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        } else {
+            //
+        }
     }
 
     /**
@@ -58,7 +75,12 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (Gate::allows('admin')) {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        } else {
+            //
+        }
     }
 
     /**
@@ -70,7 +92,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (Gate::allows('admin')) {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        } else {
+            //
+        }
     }
 
     /**
@@ -81,6 +108,11 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Gate::allows('admin')) {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        } else {
+            //
+        }
     }
 }

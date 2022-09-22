@@ -15,6 +15,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, Sortable;
 
     public $sortable = [
+        'personal_number',
         'name',
         'email',
     ];
@@ -78,5 +79,27 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * Check the user has role
+     *
+     * @param string $role
+     * @return boolean
+     */
+    public function hasAnyRole(string $role)
+    {
+        return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    /**
+     * Check the user has any roles
+     *
+     * @param array $role
+     * @return boolean
+     */
+    public function hasAnyRoles(array $role)
+    {
+        return null !== $this->roles()->whereIn('name', $role)->first();
     }
 }

@@ -16,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Guest routes
 Route::get('/', function () {
     return view('index');
+});
+
+Route::prefix('user')->name('user.')->group(function () {
+    Route::resource('/tickets', TicketController::class);
 });
 
 // User routes
@@ -25,9 +30,6 @@ Route::get('dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
-Route::prefix('user')->name('user.')->group(function () {
-    Route::resource('/tickets', TicketController::class);
-});
 
 // Admin route group
 Route::prefix('admin')->name('admin.')->group(function () {

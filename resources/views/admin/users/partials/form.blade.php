@@ -1,4 +1,19 @@
 @csrf
+{{-- Personal number register input --}}
+<div class="row mb-3">
+  <div class="col-12">
+    <label class="form-label" for="personal_number">{{ __('Personal Number') }}</label>
+    <input class="form-control @error('personal_number') is-invalid @enderror" id="personal_number"
+           name="personal_number" type="text"
+           value="@isset($user){{ $user->personal_number ?? old('name') }}@endisset"
+           autofocus>
+    @error('personal_number')
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+    @enderror
+  </div>
+</div>
 {{-- Name register input --}}
 <div class="row mb-3">
   <div class="col-12">

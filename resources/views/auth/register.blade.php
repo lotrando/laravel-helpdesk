@@ -12,7 +12,7 @@
           {{-- Personal number register input --}}
           <div class="row mb-3">
             <div class="col-12">
-              <label class="form-label" for="name">{{ __('Personal Number') }}</label>
+              <label class="form-label" for="personal_number">{{ __('Personal Number') }}</label>
               <input class="form-control @error('personal_number') is-invalid @enderror"
                      id="personal_number" name="personal_number" type="text"
                      value="{{ old('personal_number') }}" autofocus>

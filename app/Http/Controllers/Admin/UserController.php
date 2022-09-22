@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -17,9 +19,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index', [
-            'users' => User::sortable(['name' => 'asc'])->paginate(13),
-        ]);
+        if (Gate::allows('user')) {
+            return view('admin.users.index', [
+                'users' => User::sortable()->paginate(14),
+            ]);
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -29,7 +36,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create', ['roles' => Role::all()]);
+        if (Gate::allows('admin')) {
+            return view('admin.users.create', ['roles' => Role::all()]);
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -40,13 +52,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-        $user->roles()->sync($request->roles);
-        return redirect(route('admin.users.index'));
+        if (Gate::allows('admin')) {
+            $user = User::create([
+                'personal_number' => $request->personal_number,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+            $user->roles()->sync($request->roles);
+            Alert::toast(__('Created'), 'success');
+            return redirect(route('admin.users.index'));
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -57,7 +76,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Gate::allows('admin')) {
+            //
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -68,10 +92,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.edit', [
-            'roles' => Role::all(),
-            'user'  => User::findOrFail($id)
-        ]);
+        if (Gate::allows('admin')) {
+            return view('admin.users.edit', [
+                'roles' => Role::all(),
+                'user'  => User::findOrFail($id)
+            ]);
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -83,10 +112,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->update($request->except(['_token', 'roles']));
-        $user->roles()->sync($request->roles);
-        return redirect(route('admin.users.index'));
+        if (Gate::allows('admin')) {
+            $user = User::findOrFail($id);
+            $user->update($request->except(['_token', 'roles']));
+            $user->roles()->sync($request->roles);
+            Alert::toast(__('Updated'), 'success');
+            return redirect(route('admin.users.index'));
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(route('admin.users.index'));
+        }
     }
 
     /**
@@ -97,7 +132,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
-        return redirect(route('admin.users.index'));
+        if (Gate::allows('admin')) {
+            User::destroy($id);
+            Alert::toast(__('Deleted'), 'success');
+            return redirect(route('admin.users.index'));
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(route('admin.users.index'));
+        }
     }
 }
