@@ -21352,42 +21352,42 @@ h1, .h1 {
   justify-content: center;
 }
 
-.one {
+.red {
   color: rgba(255, 255, 255, 0.5647058824);
   background-color: rgba(201, 25, 25, 0.5843137255);
   grid-column: 1/4;
   grid-row: 1;
 }
 
-.two {
+.orange {
   color: rgba(255, 255, 255, 0.5647058824);
   background-color: rgba(223, 158, 17, 0.5843137255);
   grid-column: 2;
   grid-row: 1;
 }
 
-.three {
+.yellow {
   color: rgba(255, 255, 255, 0.5647058824);
   background-color: rgba(121, 139, 16, 0.631372549);
   grid-column: 3;
   grid-row: 1;
 }
 
-.four {
+.green {
   color: rgba(255, 255, 255, 0.5647058824);
   background-color: rgba(33, 187, 19, 0.5843137255);
   grid-column: 4;
   grid-row: 1;
 }
 
-.five {
+.cyan {
   color: rgba(255, 255, 255, 0.5647058824);
   background-color: rgba(18, 194, 207, 0.5843137255);
   grid-column: 1;
   grid-row: 2;
 }
 
-.six {
+.blue {
   color: rgba(255, 255, 255, 0.5647058824);
   background-color: rgba(18, 94, 207, 0.5843137255);
   grid-column: 2;

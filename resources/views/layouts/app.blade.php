@@ -26,15 +26,16 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {{-- Left Side Of Navbar --}}
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('Users') }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.roles.index') }}">{{ __('Roles') }}</a>
-          </li>
-        </ul>
-
+        @auth
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('Users') }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.roles.index') }}">{{ __('Roles') }}</a>
+            </li>
+          </ul>
+        @endauth
         {{-- Right Side Of Navbar --}}
         <ul class="navbar-nav ms-auto">
           {{-- Authentication Links --}}
@@ -54,7 +55,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
                  href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                {{ Auth::user()->name }}
+                {{ Auth::user()->personal_number . ' - ' . Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarDropdown">
                 {{-- Button trigger modal --}}

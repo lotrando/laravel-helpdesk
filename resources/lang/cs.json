@@ -1,6 +1,7 @@
 {
     "Email address": "Emailová adresa",
     "Email": "Emailová adresa",
+    "Personal Number": "Osobní číslo",
     "Password": "Heslo",
     "Password confirmation": "Potvrzení hesla",
     "Login": "Přihlásit",
@@ -28,7 +29,10 @@
     "computer": "počítačem",
     "printer": "tiskárnou",
     "Printer": "Tiskárna",
-    "maintenance": "údržby",
+    "for": "na",
+    "Fault type": "Typ závady",
+    "maintenance department": "oddělení údržby",
+    "IT department": "oddělení IT",
     "cleaning service": "úklidové služby",
     "reception": "recepční",
     "medical device": "zravotnického prostředku",
@@ -37,8 +41,16 @@
     "Personal number": "Osobní číslo",
     "Computer ID": "ID počítače",
     "Issue": "Problém",
+    "Phone": "Telefon",
     "Title": "Předmět",
     "Ticket": "Servisní požadavek",
     "Printer IN": "Inv.č. Tiskárny",
-    "If you register, you will not need to re-enter your personal information.": "Pokud se zaregistrujete, nebudete muset opětovně zadávat osobní údaje."
+    "Water": "Voda",
+    "Electro": "Elektro",
+    "Select the fault type": "Vyberte typ závady",
+    "administrator of hospital resources": "správce nemocničních prostředeků",
+    "I have an idea for improvement": "Mám nápad na zlepšení",
+    "Idea": "Nápad",
+    "Improvement": "Zepšení",
+    "If you register, you will not have to re-enter your personal information and you will see the history of your requests.": "Pokud se zaregistrujete, nebudete muset opětovně zadávat osobní údaje a uvidíte historii svých požadavků."
 }

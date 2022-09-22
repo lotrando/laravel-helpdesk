@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -24,9 +25,16 @@ class TicketController extends Controller
      */
     public function create(Request $request)
     {
+        $it_faults = DB::table('faults')->where('category', 'it')->get();
+        $hospital_faults = DB::table('faults')->where('category', 'hospital')->get();
+        $maintenance_faults = DB::table('faults')->where('category', 'maintenance')->get();
         $category = $request->type;
         $view = 'user.ticket.' . $category . '';
-        return view($view);
+        return view($view, [
+            'maintenance_faults' => $maintenance_faults,
+            'it_faults' => $it_faults,
+            'hospital_faults' => $hospital_faults
+        ]);
     }
 
     /**

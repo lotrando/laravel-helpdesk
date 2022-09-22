@@ -13,10 +13,11 @@
           {{-- Email login input --}}
           <div class="row mb-3">
             <div class="col-12">
-              <label class="form-label" for="email">{{ __('Email address') }}</label>
-              <input class="form-control @error('email') is-invalid @enderror" id="email"
-                     name="email" type="email" value="{{ old('email') }}" autofocus>
-              @error('email')
+              <label class="form-label" for="personal_number">{{ __('Personal number') }}</label>
+              <input class="form-control @error('personal_number') is-invalid @enderror"
+                     id="personal_number" name="personal_number" type="text"
+                     value="{{ old('personal_number') }}" autofocus>
+              @error('personal_number')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
