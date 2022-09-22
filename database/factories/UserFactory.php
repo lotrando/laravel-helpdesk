@@ -16,6 +16,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'personal_number' => $this->faker->numberBetween(61000, 65000),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),

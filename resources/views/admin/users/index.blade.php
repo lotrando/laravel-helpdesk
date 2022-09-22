@@ -14,7 +14,6 @@
               <th scope="col">@sortablelink('name', __('Name'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th scope="col">@sortablelink('email', __('Email address'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th scope="col">@sortablelink('created_at', __('Created At'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
-              <th scope="col">@sortablelink('updated_at', __('Updated At'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th scope="col">
                 <div class="d-grid">
                   <a class="btn btn-sm btn-block btn-success" href="{{ route('admin.users.create') }}"
@@ -30,7 +29,6 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->created_at->format('d. m. Y') }}</td>
-                <td>{{ $user->updated_at->format('d. m. Y') }}</td>
                 <td width="110px">
                   <div class="w-100 d-flex gap-1">
                     <a class="btn btn-sm btn-secondary" type="button"
