@@ -18,6 +18,8 @@ class User extends Authenticatable
         'personal_number',
         'name',
         'email',
+        'created_at',
+        'updated_at'
     ];
 
     /**

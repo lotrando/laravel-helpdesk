@@ -15,13 +15,18 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $randomNumber = $this->faker->numberBetween(61000, 65000);
+        $randomDate = $this->faker->dateTimeBetween('-3 year', '-1 month');
+
         return [
-            'personal_number' => $this->faker->numberBetween(61000, 65000),
+            'personal_number' => $randomNumber,
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => Hash::make($randomNumber),
             'remember_token' => Str::random(10),
+            'created_at' => $randomDate,
+            'updated_at' => $randomDate
         ];
     }
 
