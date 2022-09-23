@@ -26,13 +26,8 @@
               <tr>
                 <td>{{ $role->name }}</td>
                 @can('admin')
-                  <td width="110px">
+                  <td width="80px">
                     <div class="w-100 d-flex gap-1">
-                      <a class="btn btn-sm btn-secondary" type="button"
-                         href="{{ route('admin.roles.show', $role->id) }}"><i
-                           class="fa-solid fa-eye"></i>
-                        {{-- {{ __('Show') }} --}}
-                      </a>
                       <a class="btn btn-sm btn-primary" type="button"
                          href="{{ route('admin.roles.edit', $role->id) }}"><i
                            class="fa-solid fa-pen"></i>

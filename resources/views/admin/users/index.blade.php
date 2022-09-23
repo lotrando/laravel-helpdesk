@@ -18,7 +18,7 @@
               @can('admin')
                 <th scope="col">
                   <div class="d-grid">
-                    <a class="btn btn-sm btn-block btn-success" href="{{ route('admin.users.create') }}"
+                    <a class="btn btn-sm btn-success" href="{{ route('admin.users.create') }}"
                        role="button">{{ __('Create') }}</a>
                   </div>
                 </th>
@@ -42,13 +42,8 @@
                 </td>
                 <td>{{ $user->created_at->format('d. m. Y') }}</td>
                 @can('admin')
-                  <td width="110px">
+                  <td width="80px">
                     <div class="w-100 d-flex gap-1">
-                      <a class="btn btn-sm btn-secondary" type="button"
-                         href="{{ route('admin.users.show', $user->id) }}"><i
-                           class="fa-solid fa-eye"></i>
-                        {{-- {{ __('Show') }} --}}
-                      </a>
                       <a class="btn btn-sm btn-primary" type="button"
                          href="{{ route('admin.users.edit', $user->id) }}"><i
                            class="fa-solid fa-pen"></i>
