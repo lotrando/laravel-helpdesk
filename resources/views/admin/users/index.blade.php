@@ -34,7 +34,8 @@
                 <td>
                   @foreach ($user->roles as $role)
                     <span
-                          class="badge @if ($role->name === 'admin') bg-danger @elseif ($role->name === 'agent') bg-success @endif bg-secondary">
+                          class="badge @if ($role->name === 'admin') bg-danger
+                          @elseif ($role->name === 'agent') bg-success @endif bg-secondary">
                       {{ $role->name }}
                     </span>
                   @endforeach
