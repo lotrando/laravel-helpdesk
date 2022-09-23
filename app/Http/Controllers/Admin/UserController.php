@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         if (Gate::allows('user')) {
             return view('admin.users.index', [
-                'users' => User::sortable()->paginate(14),
+                'users' => User::with('roles')->sortable()->paginate(14),
             ]);
         } else {
             Alert::toast(__('Access denied'), 'error');

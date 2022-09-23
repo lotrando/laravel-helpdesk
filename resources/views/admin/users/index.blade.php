@@ -13,6 +13,7 @@
               <th>@sortablelink('personal_number', __('Personal number'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th>@sortablelink('name', __('Name'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th class="col-8">@sortablelink('email', __('Email address'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th>{{ __('Roles') }}</th>
               <th>@sortablelink('created_at', __('Created At'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               @can('admin')
                 <th scope="col">
@@ -30,6 +31,14 @@
                 <td>{{ $user->personal_number }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>
+                  @foreach ($user->roles as $role)
+                    <span
+                          class="badge @if ($role->name === 'admin') bg-danger @elseif ($role->name === 'agent') bg-success @endif bg-secondary">
+                      {{ $role->name }}
+                    </span>
+                  @endforeach
+                </td>
                 <td>{{ $user->created_at->format('d. m. Y') }}</td>
                 @can('admin')
                   <td width="110px">
@@ -46,7 +55,7 @@
                       </a>
                       <button class="btn btn-sm btn-danger" type="button"
                               onclick="event.preventDefault();
-                  document.getElementById('delete-user-{{ $user->id }}').submit()"><i
+                              document.getElementById('delete-user-{{ $user->id }}').submit()"><i
                            class="fa-solid fa-trash"></i>
                         {{-- {{ __('Delete') }} --}}
                       </button>

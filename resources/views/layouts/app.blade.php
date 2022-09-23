@@ -67,6 +67,9 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
                  href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                @can('admin')
+                  <span class="text-danger text-bold">ADMINISTRATOR </span>-
+                @endcan
                 {{ Auth::user()->personal_number . ' - ' . Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarDropdown">
