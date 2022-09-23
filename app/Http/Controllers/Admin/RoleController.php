@@ -18,7 +18,9 @@ class RoleController extends Controller
     public function index()
     {
         if (Gate::allows('admin')) {
-            return Role::all();
+            return view('admin.roles.index', [
+                'roles' => Role::paginate(10),
+            ]);
         } else {
             Alert::toast(__('Access denied'), 'error');
             return redirect(url('/'));
@@ -33,10 +35,10 @@ class RoleController extends Controller
     public function create()
     {
         if (Gate::allows('admin')) {
+            return view('admin.roles.create');
+        } else {
             Alert::toast(__('Access denied'), 'error');
             return redirect(url('/'));
-        } else {
-            //
         }
     }
 
@@ -48,7 +50,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Gate::allows('admin')) {
+            $role = Role::create([
+                'name' => $request->name,
+            ]);
+            Alert::toast(__('Created'), 'success');
+            return redirect(route('admin.roles.index'));
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -60,10 +71,10 @@ class RoleController extends Controller
     public function show($id)
     {
         if (Gate::allows('admin')) {
+            //
+        } else {
             Alert::toast(__('Access denied'), 'error');
             return redirect(url('/'));
-        } else {
-            //
         }
     }
 
@@ -76,10 +87,12 @@ class RoleController extends Controller
     public function edit($id)
     {
         if (Gate::allows('admin')) {
+            return view('admin.roles.edit', [
+                'role'  => Role::findOrFail($id)
+            ]);
+        } else {
             Alert::toast(__('Access denied'), 'error');
             return redirect(url('/'));
-        } else {
-            //
         }
     }
 
@@ -93,10 +106,13 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         if (Gate::allows('admin')) {
+            $role = Role::findOrFail($id);
+            $role->update($request->except(['_token']));
+            Alert::toast(__('Updated'), 'success');
+            return redirect(route('admin.roles.index'));
+        } else {
             Alert::toast(__('Access denied'), 'error');
             return redirect(url('/'));
-        } else {
-            //
         }
     }
 
@@ -109,10 +125,12 @@ class RoleController extends Controller
     public function destroy($id)
     {
         if (Gate::allows('admin')) {
-            Alert::toast(__('Access denied'), 'error');
-            return redirect(url('/'));
+            Role::destroy($id);
+            Alert::toast(__('Deleted'), 'success');
+            return redirect(route('admin.roles.index'));
         } else {
-            //
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(route('admin.roles.index'));
         }
     }
 }

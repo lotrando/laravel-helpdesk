@@ -14,6 +14,7 @@
 <body class="bg-image vh-100">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark-blue shadow">
     <div class="container-fluid">
+      <img class="logo-image" src="{{ asset('img/favicon.png') }}" alt="Logo image">
       <a class="navbar-brand" href="/">
         {{ config('app.name', 'Laravel') }}
       </a>
@@ -38,6 +39,9 @@
           @auth
             <li class="nav-item">
               <a class="nav-link" href="#">{{ __('Profile') }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ __('Tickets') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">{{ __('Password') }}</a>
