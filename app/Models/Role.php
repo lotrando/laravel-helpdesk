@@ -5,10 +5,19 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Role extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
+    /**
+     * Sortable columns
+     *
+     * @var array
+     */
+    public $sortable = [
+        'name'
+    ];
 
     /**
      * Fillable input fields

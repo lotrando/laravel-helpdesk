@@ -18,11 +18,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::factory()->create([
-            'personal_number' => '61625',
-            'name' => 'Klika Miroslav',
-            'email' => 'klika@khn.cz',
+            'personal_number' => '00000',
+            'name' => 'Administrator',
+            'email' => 'admin@khn.cz',
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => Hash::make('admin'),
         ]);
 
         User::factory()->count(50)->create();

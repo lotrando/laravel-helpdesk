@@ -19,7 +19,7 @@ class RoleController extends Controller
     {
         if (Gate::allows('admin')) {
             return view('admin.roles.index', [
-                'roles' => Role::paginate(10),
+                'roles' => Role::sortable()->paginate(10),
             ]);
         } else {
             Alert::toast(__('Access denied'), 'error');

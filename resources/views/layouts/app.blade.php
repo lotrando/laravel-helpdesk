@@ -67,10 +67,11 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
                  href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                @can('admin')
-                  <span class="text-danger text-bold">ADMINISTRATOR </span>-
-                @endcan
-                {{ Auth::user()->personal_number . ' - ' . Auth::user()->name }}
+                @if (Auth::user()->id == 1)
+                  <span class="text-danger">{{ Auth::user()->name }}</span>
+                @else
+                  {{ Auth::user()->personal_number . ' - ' . Auth::user()->name }}
+                @endif
               </a>
               <div class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarDropdown">
                 {{-- Button trigger modal --}}

@@ -12,7 +12,7 @@
             <tr>
               <th>@sortablelink('personal_number', __('Personal number'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th>@sortablelink('name', __('Name'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
-              <th class="col-8">@sortablelink('email', __('Email address'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th class="col-7">@sortablelink('email', __('Email address'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th>{{ __('Roles') }}</th>
               <th>@sortablelink('created_at', __('Created At'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               @can('admin')
