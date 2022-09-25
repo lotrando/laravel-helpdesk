@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\DB;
 class TicketController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * All ticket
+     * @author Lotrando [ miroslav.klika@seznam.cz ]
      *
-     * @return \Illuminate\Http\Response
+     * @return collection $tickets
      */
     public function index()
     {
@@ -19,8 +20,10 @@ class TicketController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Undocumented function
+     * @author Lotrando [ miroslav.klika@seznam.cz ]
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
