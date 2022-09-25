@@ -1,18 +1,47 @@
 root = true
 
 [*]
-charset = utf-8
+max_line_length = 100|off
 end_of_line = lf
-insert_final_newline = true
 indent_style = space
-indent_size = 4
+charset = utf8
+indent_size = 2
 trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.sh]
+indent_size = 2
+
+[*.html]
+indent_size = 2
+
+[*.{js,json}]
+indent_size = 2
+
+[*.{css,styl,scss,less,sass}]
+indent_size = 2
+
+[*.php]
+indent_size = 4
+
+[*.rb]
+indent_size = 2
+
+[*.py]
+indent_size = 4
+
+[*.txt]
+indent_size = 4
+
+[*.{c,cpp}]
+indent_size = 4
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.go]
+indent_size = 2
+indent_style = tab
 
 [*.md]
 trim_trailing_whitespace = false
-
-[*.{yml,yaml}]
-indent_size = 2
-
-[docker-compose.yml]
-indent_size = 4
+indent_style = tab
