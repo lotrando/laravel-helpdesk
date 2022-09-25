@@ -15,15 +15,15 @@ class RoleUserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::find(1);
-        $user->roles()->attach(1);
-
 
         $roles = Role::all();
-        User::all()->each(function ($user) use ($roles) {
+        User::all()->except(1)->each(function ($user) use ($roles) {
             $user->roles()->attach(
                 $roles->random(1)->pluck('id')
             );
         });
+
+        $user = User::find(1);
+        $user->roles()->attach(1);
     }
 }
