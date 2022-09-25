@@ -17,7 +17,7 @@
         <form method="POST" action="#">
           @csrf
           {{-- Personal number input --}}
-          <div class="row mb-3">
+          <div class="row">
             <div class="col-12 col-lg-2">
               <label class="form-label" for="personal_number">{{ __('Personal number') }}</label>
               <input class="form-control @error('personal_number') is-invalid @enderror"
@@ -63,7 +63,7 @@
             </div>
           </div>
 
-          <div class="row mb-3">
+          <div class="row">
             {{-- Computer ID number input --}}
             <div class="col-12 col-lg-2">
               <label class="form-label" for="id_pc">{{ __('Computer ID') }}</label>
@@ -95,7 +95,7 @@
             </div>
           </div>
           {{-- Issue Title input --}}
-          <div class="row mb-3">
+          <div class="row">
             <div class="col-12">
               <label class="form-label" for="title">{{ __('Title') }}</label>
               <input class="form-control @error('title') is-invalid @enderror" id="title"

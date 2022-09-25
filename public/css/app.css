@@ -21279,6 +21279,11 @@ body {
   color: #858585;
 }
 
+.form-label {
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+
 .bg-image {
   background-image: url(/images/background.webp?bd0c1cdbf1e6f7b6186d9ef589dfd209);
   background-position: center, center;

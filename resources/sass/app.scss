@@ -21,6 +21,11 @@ body {
     color: $text;
 }
 
+.form-label {
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+}
+
 .bg-image {
     background-image: url("../../public/img/background.webp");
     background-position: center, center;
