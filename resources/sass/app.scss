@@ -16,149 +16,146 @@ $background: #d1d1d1;
 $text: #858585;
 
 body {
-    font-family: 'Roboto Condensed';
-    background-color: $background;
-    color: $text;
+  font-family: 'Roboto Condensed';
+  background-color: $background;
+  color: $text;
 }
 
 .form-label {
-    margin-top: 0.5rem;
-    margin-bottom: 0.1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .bg-image {
-    background-image: url("../../public/img/background.webp");
-    background-position: center, center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url("../../public/img/background.webp");
+  background-position: center, center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .table {
-    color: $text;
+  color: $text;
 }
 
 td {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 th {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .navbar {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .bg-dark-blue {
-    background-color: $navBar;
+  background-color: $navBar;
 }
 
 .modal-header {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 .modal-footer {
-    border-top: 0;
+  border-top: 0;
 }
 
 h1 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .logo-image {
-    height: 3rem;
-    margin-right: 0.2rem;
+  height: 3rem;
+  margin-right: 0.2rem;
 }
 
 .wrapper {
-    margin-top: 3rem;
-    justify-content: space-evenly;
-    align-content: space-evenly;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
-    grid-gap: 30px;
-    width: 100%;
+  margin-top: 3rem;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(3, 300px);
+  grid-gap: 25px;
+  width: 100%;
 }
 
 .help-button {
-    font-size: 25px;
-    display: flex;
-    padding: 3rem;
-    color: #00000050;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+  border: #00000025;
+  border-style: solid;
+  font-size: 25px;
+  display: flex;
+  padding: 1rem;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 
 }
 
 .help-button i {
-    font-size: 130px;
+  font-size: 130px;
 }
 
 .help-button:hover {
-    background-color: #0e365fbd;
-    display: flex;
-    padding: 2rem;
-    color: #ffffff;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 2;
+  border: #0e365fee;
+  border-style: solid;
+  background-color: #0e365fbd;
+  display: flex;
+  padding: 2rem;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2;
 }
 
 .red {
-    color: #ffffff90;
-    background-color: #c9191995;
-    grid-column: 1/4;
-    grid-row: 1;
+  color: #ffffff90;
+  background-color: #F6000095;
+  grid-column: 1/4;
+  grid-row: 1;
 }
 
 .orange {
-    color: #ffffff90;
-    background-color: #df9e1195;
-    grid-column: 2;
-    grid-row: 1;
+  color: #ffffff90;
+  background-color: #FF8C0095;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .yellow {
-    color: #ffffff90;
-    background-color: #798b10a1;
-    grid-column: 3;
-    grid-row: 1;
+  color: #ffffff90;
+  background-color: #948a0095;
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .green {
-    color: #ffffff90;
-    background-color: #21bb1395;
-    grid-column: 4;
-    grid-row: 1;
-}
-
-.cyan {
-    color: #ffffff90;
-    background-color: #12c2cf95;
-    grid-column: 1;
-    grid-row: 2;
+  color: #ffffff90;
+  background-color: #4DE94C95;
+  grid-column: 4;
+  grid-row: 1;
 }
 
 .blue {
-    color: #ffffff90;
-    background-color: #125ecf95;
-    grid-column: 2;
-    grid-row: 2;
+  color: #ffffff90;
+  background-color: #3783FF95;
+  grid-column: 1;
+  grid-row: 2;
 }
 
-.seven {
-    color: #ffffff90;
-    background-color: #8312cf95;
-    grid-column: 3;
-    grid-row: 2;
+.purple {
+  color: #ffffff90;
+  background-color: #4815AA95;
+  grid-column: 2;
+  grid-row: 2;
 }
 
-.eight {
-    color: #ffffff90;
-    background-color: #ce169795;
-    grid-column: 4;
-    grid-row: 2;
+.magenta {
+  color: #ffffff90;
+  background-color: #d611ac95;
+  grid-column: 3;
+  grid-row: 2;
 }

@@ -14,15 +14,15 @@
           </div>
         @endif
         {{-- Login Form --}}
-        <form method="POST" action="#">
+        <form action="#" method="POST">
           @csrf
           {{-- Personal number input --}}
           <div class="row mb-3">
             <div class="col-12 col-lg-2">
               <label class="form-label" for="personal_number">{{ __('Personal number') }}</label>
-              <input class="form-control @error('personal_number') is-invalid @enderror"
+              <input autofocus class="form-control @error('personal_number') is-invalid @enderror"
                      id="personal_number" name="personal_number" type="text"
-                     value="{{ Auth::user()->personal_number ?? old('personal_number') }}" autofocus>
+                     value="{{ Auth::user()->personal_number ?? old('personal_number') }}">
               @error('personal_number')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@
             </div>
           </div>
           {{-- Type issue input --}}
-          <div class="row mb-3">
+          {{-- <div class="row mb-3">
             <div class="col-12">
               <label class="form-label" for="fault">{{ __('Fault type') }}</label>
               <select class="form-select @error('fault') is-invalid @enderror" id="fault"
@@ -79,7 +79,7 @@
                 </span>
               @enderror
             </div>
-          </div>
+          </div> --}}
           {{-- Title input --}}
           <div class="row mb-3">
             <div class="col-12">
@@ -98,7 +98,7 @@
             <div class="col-12">
               <label class="form-label" for="issue">{{ __('Issue') }}</label>
               <textarea class="form-control @error('issue') is-invalid @enderror" id="issue" name="issue"
-                        type="text" value="{{ old('issue') }}" rows="7"></textarea>
+                        rows="7" type="text" value="{{ old('issue') }}"></textarea>
               @error('issue')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -110,8 +110,8 @@
           <input name="category" type="hidden" value="medical">
           {{-- Buttons --}}
           <button class="btn btn-primary" type="submit">{{ __('Send') }}</button>
-          <a class="btn btn-secondary" type="submit"
-             href="{{ url()->previous() }}">{{ __('Back') }}
+          <a class="btn btn-secondary" href="{{ url()->previous() }}"
+             type="submit">{{ __('Back') }}
           </a>
         </form>
       </div>

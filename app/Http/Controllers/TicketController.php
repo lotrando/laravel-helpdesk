@@ -20,7 +20,7 @@ class TicketController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Create helpdesk ticket form by type
      * @author Lotrando [ miroslav.klika@seznam.cz ]
      *
      * @param \Illuminate\Http\Request $request
@@ -28,16 +28,10 @@ class TicketController extends Controller
      */
     public function create(Request $request)
     {
-        $it_faults = DB::table('faults')->where('category', 'it')->get();
-        $hospital_faults = DB::table('faults')->where('category', 'hospital')->get();
         $maintenance_faults = DB::table('faults')->where('category', 'maintenance')->get();
         $category = $request->type;
         $view = 'user.ticket.' . $category . '';
-        return view($view, [
-            'maintenance_faults' => $maintenance_faults,
-            'it_faults' => $it_faults,
-            'hospital_faults' => $hospital_faults
-        ]);
+        return view($view, ['maintenance_faults' => $maintenance_faults]);
     }
 
     /**
