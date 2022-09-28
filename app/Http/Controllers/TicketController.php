@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class TicketController extends Controller
     {
         if (Auth::user()) {
             return view('user.tickets.index', [
-                'tickets' => Ticket::where('personal_number', Auth::user()->personal_number)->sortable()->paginate(13),
+                'tickets' => Ticket::where('personal_number', Auth::user()->personal_number)->sortable(['created_at' => 'desc'])->paginate(13),
             ]);
         } else {
             Alert::toast(__('Access denied'), 'error');
@@ -125,10 +126,9 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        if ($ticket->personal_number == Auth::user()->personal_number) {
-            return view('user.tickets.show', [
-                'ticket' => $ticket
-            ]);
+        $ticket->load('department');
+        if (Auth::user()) {
+            return view('user.tickets.show', compact('ticket'));
         } else {
             Alert::toast(__('Access denied'), 'error');
             return redirect(route('user.tickets.index'));

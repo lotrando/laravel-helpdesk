@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
@@ -15,7 +16,9 @@ class Ticket extends Model
     public $sortable = [
         'title',
         'status',
-        'category'
+        'category',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -36,5 +39,10 @@ class Ticket extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 }

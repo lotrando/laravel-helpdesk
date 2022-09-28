@@ -5,7 +5,7 @@
     <div class="card col-12 col-md-12 m-auto border-0 shadow-lg">
       <div class="card-header bg-secondary text-light">
         <h3>
-          {{ $ticket->id }} : {{ $ticket->title }}
+          {{ $ticket->id }} <i class="far fa-calendar-plus"></i> {{ $ticket->title }}
         </h3>
         <div class="justify-content-between d-flex">
           <div>
@@ -28,6 +28,10 @@
           <div>
             <span class="text-dark">Agent:</span>
             Admin
+          </div>
+          <div>
+            <span class="text-dark">Department:</span>
+            {{ $ticket->department->department_name }}
           </div>
           <div>
             <span class="text-dark">Vloženo:</span>

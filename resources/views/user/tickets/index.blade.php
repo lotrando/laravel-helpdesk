@@ -13,32 +13,48 @@
               <th>@sortablelink('title', __('Title'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th>@sortablelink('status', __('Status'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th>@sortablelink('category', __('Category'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th>@sortablelink('created_at', __('Created'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th>@sortablelink('updated_at', __('Updated'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               @can('user')
                 <th scope="col">
-                  <div class="d-grid">
+                  <div class="d-grid justify-content-end">
                     <div class="dropdown">
                       <button class="btn btn-sm btn-success dropdown-toggle" id="dropdownMenuButton1"
                               data-bs-toggle="dropdown" type="button" aria-expanded="false">
-                        Create
+                        {{ __('Create ticket') }}
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item"
-                             href="{{ route('user.tickets.create', ['type' => 'it']) }}">{{ __('Ticket') . ' ' . __('for') . ' ' . __('IT department') }}</a>
+                             href="{{ route('user.tickets.create', ['type' => 'it']) }}">
+                            <i class="fa-solid fa-computer text-muted"></i>
+                            {{ __('for') . ' ' . __('IT department') }}</a>
                         </li>
                         <li><a class="dropdown-item"
-                             href="{{ route('user.tickets.create', ['type' => 'maintenance']) }}">{{ __('Ticket') . ' ' . __('for') . ' ' . __('maintenance department') }}</a>
+                             href="{{ route('user.tickets.create', ['type' => 'maintenance']) }}">
+                            <i class="fa-solid fa-screwdriver-wrench text-muted"></i>
+                            {{ __('for') . ' ' . __('maintenance department') }}</a>
                         </li>
                         <li><a class="dropdown-item"
-                             href="{{ route('user.tickets.create', ['type' => 'medical']) }}">{{ __('Ticket') . ' ' . __('for') . ' ' . __('administrator of hospital resources') }}</a>
+                             href="{{ route('user.tickets.create', ['type' => 'medical']) }}">
+                            <i class="fa-solid fa-suitcase-medical text-muted"></i>
+                            {{ __('for') . ' ' . __('administrator of hospital resources') }}</a>
+                        </li>
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item"
+                             href="{{ route('user.tickets.create', ['type' => 'employee']) }}">
+                            <i class="fa-solid fa-user-plus text-muted"></i>
+                            {{ __('New Employee') }}</a>
                         </li>
                         <li><a class="dropdown-item"
-                             href="{{ route('user.tickets.create', ['type' => 'employee']) }}">{{ __('New Employee') }}</a>
+                             href="{{ route('user.tickets.create', ['type' => 'permission']) }}">
+                            <i class="fa-solid fa-users text-muted"></i>
+                            {{ __('Permissions') }}</a>
                         </li>
+                        <div class="dropdown-divider"></div>
                         <li><a class="dropdown-item"
-                             href="{{ route('user.tickets.create', ['type' => 'permission']) }}">{{ __('Permissions') }}</a>
-                        </li>
-                        <li><a class="dropdown-item"
-                             href="{{ route('user.tickets.create', ['type' => 'suggestion']) }}">{{ __('I have an idea for improvement') }}</a>
+                             href="{{ route('user.tickets.create', ['type' => 'suggestion']) }}">
+                            <i class="fa-solid fa-lightbulb text-muted"></i>
+                            {{ __('I have an idea for improvement') }}</a>
                         </li>
                       </ul>
                     </div>
@@ -50,13 +66,18 @@
           <tbody>
             @foreach ($tickets as $ticket)
               <tr>
-                <td>{{ $ticket->title }}</td>
-                <td><span
+                <th class="col-7">
+                  <a class="text-muted text-decoration-none"
+                     href="{{ route('user.tickets.show', $ticket->id) }}">{{ $ticket->title }}</a>
+                </th>
+                <td>
+                  <span
                         class="badge @if ($ticket->status === 'closed') bg-danger
                         @elseif ($ticket->status === 'progress') bg-warning
                         @elseif ($ticket->status === 'compleded') bg-success @endif bg-secondary">
                     {{ $ticket->status }}
-                  </span></td>
+                  </span>
+                </td>
                 <td>
                   <span
                         class="badge @if ($ticket->category === 'it') bg-danger
@@ -65,9 +86,11 @@
                     {{ $ticket->category }}
                   </span>
                 </td>
+                <td>{{ $ticket->created_at->diffForHumans() }}</td>
+                <td>{{ $ticket->updated_at->diffForHumans() }}</td>
                 @can('user')
                   <td width="100px">
-                    <div>
+                    <div class="d-flex justify-content-end">
                       <a class="btn btn-sm btn-primary" type="button"
                          href="{{ route('user.tickets.show', $ticket->id) }}"><i
                            class="fa-solid fa-eye"></i> {{ __('Show') }}
