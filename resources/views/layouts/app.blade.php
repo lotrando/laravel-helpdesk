@@ -41,7 +41,7 @@
               <a class="nav-link" href="#">{{ __('Profile') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">{{ __('Tickets') }}</a>
+              <a class="nav-link" href="{{ route('user.tickets.index') }}">{{ __('Tickets') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">{{ __('Password') }}</a>
@@ -68,9 +68,9 @@
               <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
                  href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 @if (Auth::user()->id == 1)
-                  <span class="text-danger">{{ Auth::user()->name }}</span>
+                  <span class="text-danger">{{ Auth::user()->last_name }}</span>
                 @else
-                  {{ Auth::user()->personal_number . ' - ' . Auth::user()->name }}
+                  {{ Auth::user()->last_name . ' ' . Auth::user()->first_name }}
                 @endif
               </a>
               <div class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarDropdown">

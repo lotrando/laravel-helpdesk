@@ -19,8 +19,10 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'personal_number' => 'admin',
-            'name' => 'Administrator',
+            'last_name' => 'Administrator',
+            'first_name' => 'Admin',
             'email' => 'klika@khn.cz',
+            'phone' => '987654321',
             'email_verified_at' => now(),
             'password' => Hash::make('admin'),
         ]);

@@ -4,7 +4,7 @@
   <div class="container mb-3">
     <div class="card col-12 col-xl-10 m-auto border-0 shadow-lg">
       <div class="card-header bg-dark-blue text-light">
-        {{ __('Ticket') . ' ' . __('for') . ' ' . __('IT department') }}
+        {{ __('IT department') }}
       </div>
       <div class="card-body">
         {{-- Alert --}}
@@ -14,7 +14,7 @@
           </div>
         @endif
         {{-- Computer Ticket Form --}}
-        <form action="{{ route('user.tickets.store') }}" method="POST">
+        <form action="#" method="POST">
           @csrf
           {{-- Personal number input --}}
           <div class="row">
@@ -47,8 +47,7 @@
               <label class="form-label" for="first_name">{{ __('First name') }}</label>
               <input class="form-control @error('name') is-invalid @enderror" id="first_name"
                      name="first_name" type="text"
-                     value="{{ Auth::user()->first_name ?? old('first_name') }}"
-                     {{ Auth::user() ?? 'autofocus' }}>
+                     value="{{ Auth::user()->first_name ?? old('first_name') }}"first_>
               @error('first_name')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -118,11 +117,10 @@
           </div>
           {{-- Category hidden field --}}
           <input name="category" type="hidden" value="it">
-          <input name="status" type="hidden" value="new">
           {{-- Buttons --}}
           <button class="btn btn-primary" type="submit">{{ __('Send') }}</button>
           <a class="btn btn-secondary" type="submit"
-             href="{{ url('/') }}">{{ __('Close') }}
+             href="{{ url()->previous() }}">{{ __('Back') }}
           </a>
         </form>
       </div>

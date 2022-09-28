@@ -15,13 +15,15 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $randomNumber = $this->faker->numberBetween(61000, 65000);
+        $randomNumber = $this->faker->unique()->numberBetween(61000, 65000);
         $randomDate = $this->faker->dateTimeBetween('-3 year', '-1 month');
 
         return [
             'personal_number' => $randomNumber,
-            'name' => $this->faker->name(),
+            'last_name' => $this->faker->lastName(),
+            'first_name' => $this->faker->firstName(),
             'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
             'email_verified_at' => now(),
             'password' => Hash::make($randomNumber),
             'remember_token' => Str::random(10),

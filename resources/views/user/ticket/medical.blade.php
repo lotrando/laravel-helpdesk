@@ -14,45 +14,63 @@
           </div>
         @endif
         {{-- Login Form --}}
-        <form action="#" method="POST">
+        <form action="{{ route('user.tickets.store') }}" method="POST">
           @csrf
           {{-- Personal number input --}}
           <div class="row mb-3">
             <div class="col-12 col-lg-2">
               <label class="form-label" for="personal_number">{{ __('Personal number') }}</label>
-              <input autofocus class="form-control @error('personal_number') is-invalid @enderror"
+              <input class="form-control @error('personal_number') is-invalid @enderror"
                      id="personal_number" name="personal_number" type="text"
-                     value="{{ Auth::user()->personal_number ?? old('personal_number') }}">
+                     value="{{ Auth::user()->personal_number ?? old('personal_number') }}"
+                     {{ Auth::user() ?? 'autofocus' }}>
               @error('personal_number')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
               @enderror
             </div>
-            <div class="col-12 col-lg-4">
-              <label class="form-label" for="name">{{ __('Name') }}</label>
-              <input class="form-control @error('name') is-invalid @enderror" id="name"
-                     name="name" type="name" value="{{ Auth::user()->name ?? old('name') }}">
-              @error('name')
+            {{-- User Name input --}}
+            <div class="col-12 col-lg-3">
+              <label class="form-label" for="last_name">{{ __('Last name') }}</label>
+              <input class="form-control @error('name') is-invalid @enderror" id="last_name"
+                     name="last_name" type="text"
+                     value="{{ Auth::user()->last_name ?? old('last_name') }}"
+                     {{ Auth::user() ?? 'autofocus' }}>
+              @error('last_name')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
               @enderror
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-3">
+              <label class="form-label" for="first_name">{{ __('First name') }}</label>
+              <input class="form-control @error('name') is-invalid @enderror" id="first_name"
+                     name="first_name" type="text"
+                     value="{{ Auth::user()->first_name ?? old('first_name') }}"first_>
+              @error('first_name')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            {{-- User Email input --}}
+            <div class="col-12 col-lg-2">
               <label class="form-label" for="email">{{ __('Email') }}</label>
               <input class="form-control @error('email') is-invalid @enderror" id="email"
-                     name="email" type="email" value="{{ Auth::user()->email ?? old('email') }}">
+                     name="email" type="email" value="{{ Auth::user()->email ?? old('email') }}"
+                     {{ Auth::user() ?? 'autofocus' }}>
               @error('email')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
               @enderror
             </div>
-            <div class="col-12 col-lg-2">
+            <div class="col-12 col-md-2">
               <label class="form-label" for="phone">{{ __('Phone') }}</label>
               <input class="form-control @error('phone') is-invalid @enderror" id="phone"
-                     name="phone" type="email" value="{{ Auth::user()->phone ?? old('phone') }}">
+                     name="phone" type="text" value="{{ Auth::user()->phone ?? old('phone') }}"
+                     {{ Auth::user() ?? 'autofocus' }}>
               @error('phone')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -60,32 +78,23 @@
               @enderror
             </div>
           </div>
-          {{-- Type issue input --}}
-          {{-- <div class="row mb-3">
-            <div class="col-12">
-              <label class="form-label" for="fault">{{ __('Fault type') }}</label>
-              <select class="form-select @error('fault') is-invalid @enderror" id="fault"
-                      name="fault" type="text">
-                <option value="">{{ __('Select the fault type') }}</option>
-                @foreach ($hospital_faults as $fault)
-                  <option value="{{ $fault->id }}"
-                          @if (old('fault') == $fault->id) selected @endif>{{ __($fault->name) }}
-                  </option>
-                @endforeach
-              </select>
-              @error('type')
+          {{-- Item input --}}
+          <div class="row mb-3">
+            <div class="col-12 col-lg-3">
+              <label class="form-label" for="item_number">{{ __('Číslo prostředku') }}</label>
+              <input class="form-control @error('item_number') is-invalid @enderror" id="item_number"
+                     name="item_number" type="text"
+                     value="{{ Auth::user()->item_number ?? old('item_number') }}" autofocus>
+              @error('item_number')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
               @enderror
             </div>
-          </div> --}}
-          {{-- Title input --}}
-          <div class="row mb-3">
-            <div class="col-12">
+            <div class="col-12 col-md-9">
               <label class="form-label" for="title">{{ __('Title') }}</label>
               <input class="form-control @error('title') is-invalid @enderror" id="title"
-                     name="title" type="text" value="{{ old('title') }}">
+                     name="title" type="text" value="{{ old('title') }}" autofocus>
               @error('title')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -98,7 +107,7 @@
             <div class="col-12">
               <label class="form-label" for="issue">{{ __('Issue') }}</label>
               <textarea class="form-control @error('issue') is-invalid @enderror" id="issue" name="issue"
-                        rows="7" type="text" value="{{ old('issue') }}"></textarea>
+                        type="text" value="{{ old('issue') }}" rows="7" autofocus></textarea>
               @error('issue')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -108,10 +117,11 @@
           </div>
           {{-- Category hidden field --}}
           <input name="category" type="hidden" value="medical">
+          <input name="status" type="hidden" value="new">
           {{-- Buttons --}}
           <button class="btn btn-primary" type="submit">{{ __('Send') }}</button>
-          <a class="btn btn-secondary" href="{{ url()->previous() }}"
-             type="submit">{{ __('Back') }}
+          <a class="btn btn-secondary" type="submit"
+             href="{{ url('/') }}">{{ __('Close') }}
           </a>
         </form>
       </div>

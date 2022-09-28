@@ -1,8 +1,8 @@
 @csrf
 {{-- Personal number register input --}}
-<div class="row mb-3">
-  <div class="col-12">
-    <label class="form-label" for="personal_number">{{ __('Personal Number') }}</label>
+<div class="row">
+  <div class="col-12 col-md-3">
+    <label class="form-label" for="personal_number">{{ __('Personal number') }}</label>
     <input class="form-control @error('personal_number') is-invalid @enderror" id="personal_number"
            name="personal_number" type="text"
            value="@isset($user){{ $user->personal_number ?? old('name') }}@endisset"
@@ -13,16 +13,26 @@
       </span>
     @enderror
   </div>
-</div>
-{{-- Name register input --}}
-<div class="row mb-3">
-  <div class="col-12">
-    <label class="form-label" for="name">{{ __('Name') }}</label>
-    <input class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-           type="text"
-           value="@isset($user){{ $user->name ?? old('name') }}@endisset"
+  {{-- Last name register input --}}
+  <div class="col-12 col-md-5">
+    <label class="form-label" for="last_name">{{ __('Last name') }}</label>
+    <input class="form-control @error('last_name') is-invalid @enderror" id="last_name"
+           name="last_name" type="text"
+           value="@isset($user){{ $user->last_name ?? old('last_name') }}@endisset"
            autofocus>
-    @error('name')
+    @error('last_name')
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+    @enderror
+  </div>
+  <div class="col-12 col-md-4">
+    <label class="form-label" for="first_name">{{ __('First name') }}</label>
+    <input class="form-control @error('first_name') is-invalid @enderror" id="first_name"
+           name="first_name" type="text"
+           value="@isset($user){{ $user->first_name ?? old('first_name') }}@endisset"
+           autofocus>
+    @error('first_name')
       <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
       </span>

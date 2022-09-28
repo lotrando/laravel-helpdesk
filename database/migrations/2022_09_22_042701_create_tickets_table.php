@@ -15,12 +15,18 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('category_id')->unsigned();
-            $table->string('ticket_id')->unique();
+            $table->string('personal_number');
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('department_id')->nullable();
+            $table->text('category');
+            $table->text('item_number')->nullable();
+            $table->text('id_pc')->nullable();
             $table->string('title');
-            $table->string('priority');
-            $table->text('issue');
+            $table->longText('issue');
+            $table->string('priority')->nullable();
             $table->string('status');
             $table->timestamps();
         });

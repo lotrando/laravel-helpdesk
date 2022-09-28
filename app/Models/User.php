@@ -16,8 +16,10 @@ class User extends Authenticatable
 
     public $sortable = [
         'personal_number',
-        'name',
+        'last_name',
+        'first_name',
         'email',
+        'phone',
         'created_at',
         'updated_at'
     ];
@@ -29,8 +31,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'personal_number',
-        'name',
+        'last_name',
+        'first_name',
         'email',
+        'phone',
         'password',
     ];
 

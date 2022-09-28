@@ -12,7 +12,7 @@
           {{-- Personal number register input --}}
           <div class="row mb-3">
             <div class="col-12">
-              <label class="form-label" for="personal_number">{{ __('Personal Number') }}</label>
+              <label class="form-label" for="personal_number">{{ __('Personal number') }}</label>
               <input class="form-control @error('personal_number') is-invalid @enderror"
                      id="personal_number" name="personal_number" type="text"
                      value="{{ old('personal_number') }}" autofocus>
@@ -23,13 +23,23 @@
               @enderror
             </div>
           </div>
-          {{-- Name register input --}}
+          {{-- Last Name register input --}}
           <div class="row mb-3">
-            <div class="col-12">
-              <label class="form-label" for="name">{{ __('Name') }}</label>
-              <input class="form-control @error('name') is-invalid @enderror" id="name"
-                     name="name" type="text" value="{{ old('name') }}">
-              @error('name')
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="last_name">{{ __('Last name') }}</label>
+              <input class="form-control @error('last_name') is-invalid @enderror" id="last_name"
+                     name="last_name" type="text" value="{{ old('last_name') }}">
+              @error('last_name')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="first_name">{{ __('First name') }}</label>
+              <input class="form-control @error('first_name') is-invalid @enderror" id="first_name"
+                     name="first_name" type="text" value="{{ old('first_name') }}">
+              @error('first_name')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
@@ -38,11 +48,21 @@
           </div>
           {{-- Email register input --}}
           <div class="row mb-3">
-            <div class="col-12">
+            <div class="col-12 col-md-6">
               <label class="form-label" for="email">{{ __('Email address') }}</label>
               <input class="form-control @error('email') is-invalid @enderror" id="email"
                      name="email" type="email" value="{{ old('email') }}">
               @error('email')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="phone">{{ __('Phone') }}</label>
+              <input class="form-control @error('phone') is-invalid @enderror" id="phone"
+                     name="phone" type="text" value="{{ old('phone') }}">
+              @error('phone')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>

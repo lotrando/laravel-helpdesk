@@ -11,8 +11,9 @@
           <thead>
             <tr>
               <th>@sortablelink('personal_number', __('Personal number'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
-              <th>@sortablelink('name', __('Name'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
-              <th class="col-7">@sortablelink('email', __('Email address'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th>@sortablelink('last_name', __('Last name'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th>@sortablelink('first_name', __('First name'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
+              <th class="col-6">@sortablelink('email', __('Email address'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               <th>{{ __('Roles') }}</th>
               <th>@sortablelink('created_at', __('Created At'), ['filter' => 'visible'], ['class' => 'text-decoration-none text-muted'])</th>
               @can('admin')
@@ -29,7 +30,8 @@
             @foreach ($users as $user)
               <tr>
                 <td>{{ $user->personal_number }}</td>
-                <td>{{ $user->name }}</td>
+                <td>{{ $user->last_name }}</td>
+                <td>{{ $user->first_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
                   @foreach ($user->roles as $role)

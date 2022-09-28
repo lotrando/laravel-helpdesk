@@ -23,8 +23,6 @@
           {{ __('Medical device manager') }}
         </div>
       </a>
-      @can('admin')
-      @endcan
       <a class="text-decoration-none"
          href="{{ route('user.tickets.create', ['type' => 'employee']) }}">
         <div class="purple card help-button rounded-4 p-2">
@@ -32,7 +30,8 @@
           {{ __('New employee') }}
         </div>
       </a>
-      <a class="text-decoration-none" href="{{ route('user.tickets.create', ['type' => 'roles']) }}">
+      <a class="text-decoration-none"
+         href="{{ route('user.tickets.create', ['type' => 'permission']) }}">
         <div class="yellow card help-button rounded-4 p-2">
           <i class="fa-solid fa-users p-4"></i>
           {{ __('Employee rights') }}

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TicketController extends Controller
 {
@@ -16,7 +19,14 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $ticket = Ticket::all();
+        if (Auth::user()) {
+            return view('user.tickets.index', [
+                'tickets' => Ticket::where('personal_number', Auth::user()->personal_number)->sortable()->paginate(13),
+            ]);
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(url('/'));
+        }
     }
 
     /**
@@ -28,10 +38,21 @@ class TicketController extends Controller
      */
     public function create(Request $request)
     {
-        $maintenance_faults = DB::table('faults')->where('category', 'maintenance')->get();
-        $category = $request->type;
-        $view = 'user.ticket.' . $category . '';
-        return view($view, ['maintenance_faults' => $maintenance_faults]);
+        $jobs = DB::table('jobs')->get();
+        $programs = DB::table('programs')->get();
+        $departments = DB::table('departments')->get();
+        $type = $request->type;
+        if ($type == 'employee' and !Auth::user()) {
+            Alert::toast(__('Access denied '), 'error');
+            return redirect(route('user.tickets.index'));
+        } else {
+            $view = 'user.ticket.' . $type . '';
+            return view($view, [
+                'departments' => $departments,
+                'jobs' => $jobs,
+                'programs' => $programs,
+            ]);
+        }
     }
 
     /**
@@ -42,7 +63,58 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->category == 'it') {
+            $validated = $request->validate([
+                'personal_number' => ['required'],
+                'last_name' => ['required'],
+                'first_name' => ['required'],
+                'email' => ['required'],
+                'phone' => ['required'],
+                'id_pc' => ['required'],
+                'title' => ['required'],
+                'issue' => ['required'],
+                'category' => ['required'],
+                'status' => ['required']
+            ]);
+
+            Ticket::create($validated);
+            Alert::toast(__('Created'), 'success');
+            return redirect(route('user.tickets.create', ['type' => 'it']));
+        } elseif ($request->category == 'maintenance') {
+            $validated = $request->validate([
+                "personal_number" => ['required'],
+                "last_name" => ['required'],
+                "first_name" => ['required'],
+                "email" => ['required'],
+                "phone" => ['required'],
+                "department_id" => ['required'],
+                "title" => ['required'],
+                "issue" => ['required'],
+                "category" => ['required'],
+                'status' => ['required']
+            ]);
+
+            Ticket::create($validated);
+            Alert::toast(__('Created'), 'success');
+            return redirect(route('user.tickets.create', ['type' => 'maintenance']));
+        } elseif ($request->category == 'medical') {
+            $validated = $request->validate([
+                "personal_number" => ['required'],
+                "last_name" => ['required'],
+                "first_name" => ['required'],
+                "email" => ['required'],
+                "phone" => ['required'],
+                "item_number" => ['required'],
+                "title" => ['required'],
+                "issue" => ['required'],
+                "category" => ['required'],
+                "status" => ['required'],
+            ]);
+
+            Ticket::create($validated);
+            Alert::toast(__('Created'), 'success');
+            return redirect(route('user.tickets.create', ['type' => 'medical']));
+        }
     }
 
     /**
@@ -53,7 +125,14 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        if ($ticket->personal_number == Auth::user()->personal_number) {
+            return view('user.tickets.show', [
+                'ticket' => $ticket
+            ]);
+        } else {
+            Alert::toast(__('Access denied'), 'error');
+            return redirect(route('user.tickets.index'));
+        }
     }
 
     /**

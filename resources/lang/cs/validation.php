@@ -123,7 +123,7 @@ return [
         ],
     ],
     'attributes' => [
-        'personal_number' => 'osobní číslo',
+        'personal_number' => 'číslo',
         'last_name' => 'příjmení',
         'first_name' => 'jméno',
         'title' => 'titul',
@@ -132,7 +132,9 @@ return [
         'password' => 'heslo',
         'name' => 'jméno',
         'department_id' => 'oddělení',
+        'job_id' => 'pole funkce',
         'date_start' => 'od',
         'date_end' => 'do',
+        'issue' => 'toto pole',
     ]
 ];

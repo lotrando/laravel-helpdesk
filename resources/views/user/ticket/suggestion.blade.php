@@ -52,7 +52,7 @@
             <div class="col-12 col-md-2">
               <label class="form-label" for="phone">{{ __('Phone') }}</label>
               <input class="form-control @error('phone') is-invalid @enderror" id="phone"
-                     name="phone" type="email" value="{{ Auth::user()->phone ?? old('phone') }}">
+                     name="phone" type="text" value="{{ Auth::user()->phone ?? old('phone') }}">
               @error('phone')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>

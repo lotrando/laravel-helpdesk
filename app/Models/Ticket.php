@@ -4,30 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Ticket extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
-    protected $fillable = [
-        'user_id',
-        'category_id',
-        'ticket_id',
+    protected $guarded = [];
+
+    public $sortable = [
         'title',
-        'priority',
-        'message',
-        'status'
+        'status',
+        'category'
     ];
-
-    /**
-     * Model relationship to Category::class
-     *
-     * @return void
-     */
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
     /**
      * Model relationship to Comment::class

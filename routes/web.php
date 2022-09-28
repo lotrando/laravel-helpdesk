@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +37,10 @@ Route::get('dashboard', function () {
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
+});
+
+// User route group
+Route::prefix('user')->name('user.')->group(function () {
+    Route::resource('/employees', EmployeeController::class);
+    Route::resource('/permissions', PermissionController::class);
 });

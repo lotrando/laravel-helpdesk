@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -21,8 +22,9 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'personal_number' => ['required', 'string', 'min:5', 'max:5'],
-            'name' => ['required', 'string', 'max:255'],
+            'personal_number' => ['required', 'string', 'min:5', 'max:5', Rule::unique(User::class)],
+            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -30,14 +32,19 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'phone' => ['nullable', 'string'],
             'password' => $this->passwordRules(),
         ])->validate();
 
         return User::create([
             'personal_number' => $input['personal_number'],
-            'name' => $input['name'],
+            'last_name' => $input['last_name'],
+            'first_name' => $input['first_name'],
             'email' => $input['email'],
+            'phone' => $input['phone'],
             'password' => Hash::make($input['password']),
         ]);
+
+        Alert::toast(__('Created'), 'success');
     }
 }
