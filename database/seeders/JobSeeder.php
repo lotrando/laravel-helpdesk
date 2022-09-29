@@ -21,5 +21,13 @@ class JobSeeder extends Seeder
         DB::table('jobs')->insert([
             'job_name' => 'sestra'
         ]);
+
+        DB::table('jobs')->insert([
+            'job_name' => 'pomocnice na úklid'
+        ]);
+
+        DB::table('jobs')->insert([
+            'job_name' => 'sanitář/ka'
+        ]);
     }
 }

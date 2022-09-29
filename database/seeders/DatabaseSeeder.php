@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleUserSeeder::class,
             JobSeeder::class,
+            TypeSeeder::class,
             ProgramSeeder::class,
         ]);
     }

@@ -41,6 +41,7 @@ class TicketController extends Controller
     {
         $jobs = DB::table('jobs')->get();
         $programs = DB::table('programs')->get();
+        $types = DB::table('types')->get();
         $departments = DB::table('departments')->get();
         $type = $request->type;
         if ($type == 'employee' and !Auth::user()) {
@@ -52,6 +53,7 @@ class TicketController extends Controller
                 'departments' => $departments,
                 'jobs' => $jobs,
                 'programs' => $programs,
+                'types' => $types
             ]);
         }
     }

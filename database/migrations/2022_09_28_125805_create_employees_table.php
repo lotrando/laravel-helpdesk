@@ -23,6 +23,9 @@ class CreateEmployeesTable extends Migration
             $table->string('phone')->nullable();
             $table->string('department_id');
             $table->string('job_id');
+            $table->enum('coffee', ['Ano', 'Ne'])->default('Ne');
+            $table->enum('catering', ['Ano', 'Ne'])->default('Ne');
+            $table->enum('type', ['HPP', 'DPP', 'DPČ'])->default('HPP');
             $table->timestamps();
         });
     }
