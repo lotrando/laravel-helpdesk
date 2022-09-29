@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProgramSeeder extends Seeder
+class TypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,16 @@ class ProgramSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('programs')->insert([
-            'name' => 'Akord'
+        DB::table('types')->insert([
+            'name' => 'HPP'
         ]);
 
-        DB::table('programs')->insert([
-            'name' => 'Čtečky'
+        DB::table('types')->insert([
+            'name' => 'DPP'
+        ]);
+
+        DB::table('types')->insert([
+            'name' => 'DPČ'
         ]);
     }
 }

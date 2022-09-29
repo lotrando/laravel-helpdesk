@@ -39,6 +39,8 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        //return $request;
+
         $validated = $request->validate([
             'personal_number' => ['required', 'string', 'min:5', 'max:5'],
             'title_preffix' => ['nullable', 'string'],
@@ -48,6 +50,9 @@ class EmployeeController extends Controller
             'phone' => ['nullable', 'string'],
             'department_id' => ['required'],
             'job_id' => ['required'],
+            'coffee' => ['nullable'],
+            'catering' => ['nullable'],
+            'type' => ['nullable']
         ]);
 
         Employee::create($validated);
