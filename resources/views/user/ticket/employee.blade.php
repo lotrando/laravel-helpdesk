@@ -70,19 +70,8 @@
             </div>
           </div>
           <div class="row mb-3">
-            {{-- Phone input --}}
-            <div class="col-12 col-lg-2">
-              <label class="form-label" for="phone">{{ __('Phone') }}</label>
-              <input class="form-control @error('phone') is-invalid @enderror" id="phone"
-                     name="phone" type="text" value="{{ old('phone') }}">
-              @error('phone')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
             {{-- Department input --}}
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
               <label class="form-label" for="department_id">{{ __('Department') }}</label>
               <select class="form-select @error('department_id') is-invalid @enderror"
                       id="department_id" name="department_id" type="text">
@@ -100,7 +89,7 @@
                 </span>
               @enderror
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
               <label class="form-label" for="job_id">{{ __('Function') }}</label>
               <select class="form-select @error('job_id') is-invalid @enderror" id="job_id"
                       name="job_id" type="text">
@@ -118,59 +107,12 @@
                 </span>
               @enderror
             </div>
-            <div class="col-12 col-md-2">
-              <label class="form-label" for="type">{{ __('Employment') }}</label>
-              <select class="form-select @error('type') is-invalid @enderror" id="type"
-                      name="type" type="text">
-                <option value="">{{ __('Employment') }}</option>
-                @foreach ($types as $type)
-                  <option value="{{ $type->name }}"
-                          @if (old('department_id') == $type->name) selected @endif>
-                    {{ __($type->name) }}
-                  </option>
-                @endforeach
-              </select>
-              @error('type')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-12 col-lg-2">
-              <div class="form-check">
-                <input class="form-check-input" id="coffee" name="coffee" type="checkbox"
-                       value="Ano" {{ old('coffee') == 'Ano' ? 'checked' : 'Ne' }}>
-                <label for="coffee"></label>
-                {{ __('Coffee') }}
-              </div>
-              @error('coffee')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
-            <div class="col-12 col-lg-2">
-              <div class="form-check">
-                <input class="form-check-input" id="catering" name="catering" type="checkbox"
-                       value="Ano" {{ old('catering') == 'Ano' ? 'checked' : 'Ne' }}>
-                <label for="coffee"></label>
-                {{ __('Catering') }}
-              </div>
-              @error('catering')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-              @enderror
-            </div>
           </div>
           {{-- Category hidden field --}}
           <input name="category" type="hidden" value="employee">
           {{-- Buttons --}}
           <button class="btn btn-primary" type="submit">{{ __('Send') }}</button>
-          <a class="btn btn-secondary" type="submit"
-             href="{{ url('/') }}">{{ __('Close') }}
+          <a class="btn btn-secondary" type="submit" href="{{ url('/') }}">{{ __('Close') }}
           </a>
         </form>
       </div>

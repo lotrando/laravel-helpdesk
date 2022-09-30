@@ -15,35 +15,19 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'category_name' => 'Počítač'
+            'category_name' => 'it'
         ]);
 
         DB::table('categories')->insert([
-            'category_name' => 'Tiskárna'
+            'category_name' => 'maintenance'
         ]);
 
         DB::table('categories')->insert([
-            'category_name' => 'Údržba'
+            'category_name' => 'medical'
         ]);
 
         DB::table('categories')->insert([
-            'category_name' => 'Úklid'
-        ]);
-
-        DB::table('categories')->insert([
-            'category_name' => 'Zdravotnický prostředek'
-        ]);
-
-        DB::table('categories')->insert([
-            'category_name' => 'Recepce'
-        ]);
-
-        DB::table('categories')->insert([
-            'category_name' => 'Stravovací provoz'
-        ]);
-
-        DB::table('categories')->insert([
-            'category_name' => 'Náměty'
+            'category_name' => 'suggestion'
         ]);
     }
 }
